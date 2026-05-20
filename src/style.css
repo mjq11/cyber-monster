@@ -345,6 +345,43 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 
 /* ============================================================
+   页面4: 日常作息（二选一）
+   ============================================================ */
+#page-routine.active, #page-power.active {
+  justify-content: flex-start;
+  padding: 20px 16px 40px;
+}
+.binary-choices {
+  width: 100%; max-width: 400px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.binary-row {
+  display: flex; gap: 10px;
+}
+.binary-option {
+  flex: 1;
+  padding: 14px 8px;
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--text2);
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 12px;
+  text-align: center;
+  transition: all .25s;
+  line-height: 1.4;
+}
+.binary-option .binary-emoji {
+  display: block; font-size: 1.5rem; margin-bottom: 4px;
+}
+.binary-option:active { transform: scale(0.96); }
+.binary-option.selected {
+  color: #fff;
+  border-color: var(--purple);
+  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(34,211,238,0.1));
+  box-shadow: 0 0 14px rgba(168,85,247,0.2);
+}
+
+/* ============================================================
    页面4: 合成动画
    ============================================================ */
 .synth-content {

@@ -37,7 +37,7 @@
     <!-- ===== 页面2: 燃料注入（滑条） ===== -->
     <section id="page-fuel" class="page">
       <div class="step-header">
-        <span class="step-badge">STEP 1/2</span>
+        <span class="step-badge">STEP 1/4</span>
         <h2>⚗️ 能量成分注入</h2>
         <p class="step-desc">拖动滑条分配你的日常能量来源比例</p>
       </div>
@@ -58,7 +58,7 @@
     <!-- ===== 页面3: 栖息地选择（标签） ===== -->
     <section id="page-habitat" class="page">
       <div class="step-header">
-        <span class="step-badge">STEP 2/2</span>
+        <span class="step-badge">STEP 2/4</span>
         <h2>🌐 数字栖息地扫描</h2>
         <p class="step-desc">选择你的活跃时间段和主要 App</p>
       </div>
@@ -73,6 +73,35 @@
         <div class="tag-list" id="app-tags">
           <!-- JS 动态生成 -->
         </div>
+      </div>
+      <button id="btn-to-routine" class="btn-neon">下一步 →</button>
+    </section>
+
+    <!-- ===== 页面4: 日常作息扫描 ===== -->
+    <section id="page-routine" class="page">
+      <div class="step-header">
+        <span class="step-badge">STEP 3/4</span>
+        <h2>🔄 日常作息扫描</h2>
+        <p class="step-desc">快速二选一，暴露你的真实生活方式</p>
+      </div>
+      <div class="binary-choices" id="binary-choices"></div>
+      <button id="btn-to-power" class="btn-neon">下一步 →</button>
+    </section>
+
+    <!-- ===== 页面5: 超能力与弱点 ===== -->
+    <section id="page-power" class="page">
+      <div class="step-header">
+        <span class="step-badge">STEP 4/4</span>
+        <h2>⚡ 超能力 & 致命弱点</h2>
+        <p class="step-desc">选择你拥有的超能力和致命弱点</p>
+      </div>
+      <div class="tag-group">
+        <h3 class="tag-title">💪 我的超能力（选1-2个）</h3>
+        <div class="tag-list" id="power-tags"></div>
+      </div>
+      <div class="tag-group">
+        <h3 class="tag-title">💀 我的致命弱点（选1-2个）</h3>
+        <div class="tag-list" id="weakness-tags"></div>
       </div>
       <button id="btn-synthesize" class="btn-neon">🧪 开始合成</button>
     </section>
