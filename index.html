@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="赛博成分分析仪 — 输入你的数字生活习惯，合成你的专属赛博怪兽！" />
+  <title>赛博成分分析仪 | 数字人格实验室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <div class="bg-particles" id="bg-particles"></div>
+
+    <!-- 音效开关 -->
+    <button id="sound-toggle" class="sound-toggle" aria-label="音效开关">
+      <span id="sound-icon">🔊</span>
+    </button>
+
+    <!-- ===== 页面1: 欢迎页 ===== -->
+    <section id="page-welcome" class="page active">
+      <div class="welcome-content">
+        <div class="lab-icon">🧬</div>
+        <h1 class="title-glow">赛博成分分析仪</h1>
+        <p class="subtitle-en">CYBER COMPONENT ANALYZER</p>
+        <p class="subtitle-cn">数字人格分子实验室</p>
+        <p class="welcome-desc">扫描你的数字生活习惯<br/>合成专属于你的赛博怪兽</p>
+        <button id="btn-enter" class="btn-neon">
+          <span>🔬 进入实验室</span>
+        </button>
+      </div>
+      <!-- 底部 DNA 螺旋装饰 -->
+      <canvas id="dna-canvas" class="dna-canvas"></canvas>
+    </section>
+
+    <!-- ===== 页面2: 燃料注入（滑条） ===== -->
+    <section id="page-fuel" class="page">
+      <div class="step-header">
+        <span class="step-badge">STEP 1/2</span>
+        <h2>⚗️ 能量成分注入</h2>
+        <p class="step-desc">拖动滑条分配你的日常能量来源比例</p>
+      </div>
+      <div class="fuel-container" id="fuel-container">
+        <!-- JS 动态生成滑条 -->
+      </div>
+      <div class="total-bar">
+        <span>总能量</span>
+        <div class="total-progress"><div id="total-fill" class="total-fill"></div></div>
+        <span id="total-value" class="total-value">0%</span>
+      </div>
+      <div class="vessel-preview">
+        <canvas id="vessel-canvas" width="200" height="200"></canvas>
+      </div>
+      <button id="btn-next-step" class="btn-neon" disabled>下一步 →</button>
+    </section>
+
+    <!-- ===== 页面3: 栖息地选择（标签） ===== -->
+    <section id="page-habitat" class="page">
+      <div class="step-header">
+        <span class="step-badge">STEP 2/2</span>
+        <h2>🌐 数字栖息地扫描</h2>
+        <p class="step-desc">选择你的活跃时间段和主要 App</p>
+      </div>
+      <div class="tag-group">
+        <h3 class="tag-title">🕐 活跃时间段</h3>
+        <div class="tag-list" id="time-tags">
+          <!-- JS 动态生成 -->
+        </div>
+      </div>
+      <div class="tag-group">
+        <h3 class="tag-title">📱 主要栖息 App</h3>
+        <div class="tag-list" id="app-tags">
+          <!-- JS 动态生成 -->
+        </div>
+      </div>
+      <button id="btn-synthesize" class="btn-neon">🧪 开始合成</button>
+    </section>
+
+    <!-- ===== 页面4: 合成动画 ===== -->
+    <section id="page-synth" class="page">
+      <div class="synth-content">
+        <div class="synth-vessel">
+          <canvas id="synth-canvas" width="300" height="300"></canvas>
+          <div class="synth-ring ring1"></div>
+          <div class="synth-ring ring2"></div>
+          <div class="synth-ring ring3"></div>
+        </div>
+        <p id="synth-status" class="synth-status">正在解析数字基因组…</p>
+        <div class="synth-progress">
+          <div id="synth-fill" class="synth-fill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 页面5: 怪兽报告 ===== -->
+    <section id="page-result" class="page">
+      <div id="result-card" class="result-card">
+        <div class="result-header">
+          <div class="result-badge">🧬 数字人格分析报告</div>
+          <p class="result-sub">DIGITAL PERSONA ANALYSIS REPORT</p>
+        </div>
+        <div class="monster-display">
+          <canvas id="monster-canvas" width="280" height="280"></canvas>
+        </div>
+        <h2 id="monster-name" class="monster-name"></h2>
+        <p id="monster-species" class="monster-species"></p>
+        <div class="stats-grid" id="stats-grid">
+          <!-- JS 动态生成 -->
+        </div>
+        <div class="trait-section">
+          <h3 class="trait-title">📋 行为特征</h3>
+          <p id="trait-desc" class="trait-desc"></p>
+        </div>
+        <div class="result-footer">
+          <canvas id="qr-code" width="80" height="80"></canvas>
+          <p class="qr-hint">扫码合成你的赛博怪兽</p>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button id="btn-save" class="btn-neon">📸 保存怪兽卡片</button>
+        <button id="btn-redo" class="btn-ghost">🔄 重新合成</button>
+      </div>
+    </section>
+
+    <!-- 分享弹窗 -->
+    <div id="share-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-body">
+        <img id="poster-image" class="poster-preview" alt="怪兽卡片" />
+        <p class="modal-hint">📱 长按图片保存到相册，分享给朋友</p>
+        <button id="btn-close-modal" class="btn-ghost">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
