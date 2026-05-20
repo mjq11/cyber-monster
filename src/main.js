@@ -339,28 +339,7 @@ function showResult() {
   $('monster-species').textContent = monster.species;
   $('trait-desc').textContent = monster.trait;
 
-  // 构建属性网格
-  const grid = $('stats-grid');
-  grid.innerHTML = '';
-  monster.stats.forEach(s => {
-    const div = document.createElement('div');
-    div.className = 'stat-item';
-    div.innerHTML = `
-      <div class="stat-icon">${s.icon}</div>
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-bar"><div class="stat-fill" style="width:0%;background:${s.color}"></div></div>
-    `;
-    grid.appendChild(div);
-  });
-
   navigateTo('result');
-
-  // 属性条动画
-  requestAnimationFrame(() => {
-    grid.querySelectorAll('.stat-fill').forEach((el, i) => {
-      el.style.width = Math.round(monster.stats[i].value) + '%';
-    });
-  });
 
   // 绘制怪兽
   setTimeout(() => {
